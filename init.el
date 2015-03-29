@@ -7,6 +7,9 @@
 ;; load machine local settings
 (load-file (expand-file-name "local.el" user-emacs-directory))
 
+;; use F6 to cycle through windows
+(global-set-key (kbd "<f6>") 'other-window)
+
 ;; helm
 (require 'helm-config)
 (global-set-key (kbd "M-x") 'helm-M-x)
