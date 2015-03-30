@@ -4,53 +4,28 @@
              '("melpa" . "http://melpa.org/packages/") t)
 (package-initialize)
 
+;; add settings to the load-path
+(add-to-list 'load-path (expand-file-name "settings" user-emacs-directory))
+
+;; default config set
+(setq my-config-set 'default)
+
 ;; load machine local settings
-(load-file (expand-file-name "local.el" user-emacs-directory))
+(setq my-local-init (expand-file-name "local.el" user-emacs-directory))
+(when (file-exists-p my-local-init)
+      (load-file my-local-init))
+
+;; load config set
+(load-file (expand-file-name
+            (concat (file-name-as-directory "config-sets")
+                    (concat (symbol-name my-config-set) ".el"))
+            user-emacs-directory))
 
 ;; use F6 to cycle through windows
 (global-set-key (kbd "<f6>") 'other-window)
 
-;; helm
-(require 'helm-config)
-(global-set-key (kbd "M-x") 'helm-M-x)
-(global-set-key (kbd "C-x C-f") 'helm-find-files)
-(global-set-key (kbd "C-x C-b") 'helm-buffers-list)
-(helm-mode 1)
-
-;; projectile
-(projectile-global-mode 1)
-(require 'helm-projectile)
-(helm-projectile-on)
-
-;; yasnippet
-(require 'yasnippet)
-(yas-global-mode 1)
-
-;; irony
-(require 'irony)
-(require 'irony-cdb)
-(defun my-irony-mode-hook ()
-  (define-key irony-mode-map [remap completion-at-point]
-    'irony-completion-at-point-async)
-  (define-key irony-mode-map [remap complete-symbol]
-    'irony-completion-at-point-async))
-(add-hook 'irony-mode-hook 'my-irony-mode-hook)
-(add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
-
-(eval-after-load 'company
-  '(add-to-list 'company-backends 'company-irony))
-
-;; company
-(require 'company)
-(global-set-key (kbd "C-M-i") 'company-complete)
-
-;; C common mode hook
-(add-hook 'c-mode-common-hook
-          (lambda ()
-            (semantic-mode 1)
-            (semantic-idle-summary-mode 1)
-            (company-mode 1)
-            (irony-mode 1)))
+;; use UTF-8 with unix line endings
+(setq-default buffer-file-coding-system 'utf-8-unix)
 
 ;; customize
 (custom-set-variables
@@ -67,9 +42,3 @@
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
  '(tool-bar-mode nil))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(default ((t (:height 120 :family "Ubuntu Mono")))))
