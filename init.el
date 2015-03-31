@@ -27,6 +27,10 @@
 ;; use UTF-8 with unix line endings
 (setq-default buffer-file-coding-system 'utf-8-unix)
 
+;; after ediff, put back windows as they were
+(add-hook 'ediff-before-setup-hook (lambda () (window-configuration-to-register 'e)))
+(add-hook 'ediff-quit-hook (lambda () (jump-to-register 'e)))
+
 ;; customize
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -34,11 +38,25 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(blink-cursor-mode nil)
- '(c-default-style (quote ((c-mode . "stroustrup") (c++-mode . "stroustrup") (java-mode . "java") (awk-mode . "awk") (other . "gnu"))))
+ '(c-default-style
+   (quote
+    ((c-mode . "stroustrup")
+     (c++-mode . "stroustrup")
+     (java-mode . "java")
+     (awk-mode . "awk")
+     (other . "gnu"))))
  '(column-number-mode t)
  '(default-frame-alist (quote ((width . 120) (height . 56))))
+ '(ediff-split-window-function (quote split-window-horizontally))
+ '(ediff-window-setup-function (quote ediff-setup-windows-plain))
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
  '(tool-bar-mode nil))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
