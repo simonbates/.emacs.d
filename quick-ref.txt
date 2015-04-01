@@ -1,0 +1,51 @@
+C-x C-f                 Find file
+C-x C-s                 Save buffer
+C-x C-b                 List buffers
+C-x k                   Kill buffer
+
+C-g                     Quit (cancel)
+
+C-f                     Forward character
+C-b                     Backward character
+C-n                     Next line
+C-p                     Previous line
+C-a                     Beginning of line
+C-e                     End of line
+M-f                     Forward word
+M-b                     Backward word
+M-{                     Forward paragraph
+M-}                     Backward paragraph
+M-<                     Beginning of buffer
+M->                     End of buffer
+
+C-s                     Search forward
+C-r                     Search backward
+C-M-s                   Regexp search forward
+C-M-r                   Regexp search backward
+M-s .                   isearch-forward-symbol-at-point
+
+C-space                 Mark
+M-w                     Copy region
+C-w                     Kill region
+C-d                     Delete character
+C-k                     Kill line
+C-y                     Yank
+C-/                     Undo
+
+M-x comment-region      Comment region
+M-x uncomment-region    Uncomment region
+
+C-x 0                   Delete window
+C-x 1                   Delete other windows
+C-x 2                   Split window below
+C-x 3                   Split window right
+C-x o                   Other window
+C-l                     Recenter top bottom
+
+C-h k                   Describe key
+C-h m                   Describe mode
+
+C-c p p                 Switch project
+C-c p f                 Find file in project
+
+M-x helm-imenu          Jump to function
