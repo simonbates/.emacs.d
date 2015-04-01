@@ -1,9 +1,16 @@
+Files and Buffers
+-----------------
+
 C-x C-f                 Find file
 C-x C-s                 Save buffer
 C-x C-b                 List buffers
+C-x b                   Select buffer
 C-x k                   Kill buffer
 
 C-g                     Quit (cancel)
+
+Movement
+--------
 
 C-f                     Forward character
 C-b                     Backward character
@@ -24,6 +31,11 @@ C-M-s                   Regexp search forward
 C-M-r                   Regexp search backward
 M-s .                   isearch-forward-symbol-at-point
 
+M-x helm-imenu          Jump to function
+
+Editing
+-------
+
 C-space                 Mark
 M-w                     Copy region
 C-w                     Kill region
@@ -35,17 +47,41 @@ C-/                     Undo
 M-x comment-region      Comment region
 M-x uncomment-region    Uncomment region
 
+Windows
+-------
+
 C-x 0                   Delete window
 C-x 1                   Delete other windows
 C-x 2                   Split window below
 C-x 3                   Split window right
-C-x o                   Other window
+C-x o, M-o              Other window
 C-l                     Recenter top bottom
 
+Help
+----
+
+C-h f                   Describe function
 C-h k                   Describe key
 C-h m                   Describe mode
+
+Lisp
+----
+
+C-x C-e                 Eval last sexp
+
+Helm
+----
+
+C-j                     Go down a level
+C-l                     Go up one level
+
+Projectile
+----------
 
 C-c p p                 Switch project
 C-c p f                 Find file in project
 
-M-x helm-imenu          Jump to function
+Magit
+-----
+
+F10                     magit-status

@@ -21,8 +21,9 @@
                     (concat (symbol-name my-config-set) ".el"))
             user-emacs-directory))
 
-;; use F6 to cycle through windows
-(global-set-key (kbd "<f6>") 'other-window)
+;; key bindings
+(global-set-key (kbd "M-o") 'other-window)
+(global-set-key (kbd "<f10>") 'magit-status)
 
 ;; use UTF-8 with unix line endings
 (setq-default buffer-file-coding-system 'utf-8-unix)
