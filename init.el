@@ -32,6 +32,9 @@
 (add-hook 'ediff-before-setup-hook (lambda () (window-configuration-to-register 'e)))
 (add-hook 'ediff-quit-hook (lambda () (jump-to-register 'e)))
 
+;; show line numbers
+(global-linum-mode 1)
+
 ;; customize
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -46,12 +49,12 @@
      (java-mode . "java")
      (awk-mode . "awk")
      (other . "gnu"))))
- '(column-number-mode t)
  '(default-frame-alist (quote ((width . 120) (height . 56))))
  '(ediff-split-window-function (quote split-window-horizontally))
  '(ediff-window-setup-function (quote ediff-setup-windows-plain))
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
+ '(line-number-mode nil)
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
  '(tool-bar-mode nil))
