@@ -76,7 +76,7 @@
  '(fringe-mode (quote (0 . 8)) nil (fringe))
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
- '(js2-global-externs (quote ("fluid" "jQuery" "require")))
+ '(js2-global-externs (quote ("__dirname" "fluid" "jQuery" "module" "require")))
  '(line-number-mode nil)
  '(linum-format "%4d  ")
  '(scroll-bar-mode nil)
