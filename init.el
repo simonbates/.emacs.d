@@ -32,8 +32,9 @@
 (add-hook 'ediff-before-setup-hook (lambda () (window-configuration-to-register 'e)))
 (add-hook 'ediff-quit-hook (lambda () (jump-to-register 'e)))
 
-;; show line numbers
+;; global modes
 (global-linum-mode 1)
+(electric-pair-mode 1)
 
 ;; customize
 (custom-set-variables
@@ -54,6 +55,7 @@
  '(ediff-window-setup-function (quote ediff-setup-windows-plain))
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
+ '(js2-global-externs (quote ("fluid" "jQuery")))
  '(line-number-mode nil)
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
