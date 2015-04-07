@@ -36,6 +36,9 @@
 (global-linum-mode 1)
 (electric-pair-mode 1)
 
+;; Markdown
+(add-to-list 'auto-mode-alist '("\\.md\\'" . gfm-mode))
+
 ;; GPII
 
 (defun start-easit-oauth-integration ()
@@ -66,13 +69,16 @@
      (java-mode . "java")
      (awk-mode . "awk")
      (other . "gnu"))))
+ '(column-number-mode t)
  '(default-frame-alist (quote ((width . 120) (height . 56))))
  '(ediff-split-window-function (quote split-window-horizontally))
  '(ediff-window-setup-function (quote ediff-setup-windows-plain))
+ '(fringe-mode (quote (0 . 8)) nil (fringe))
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
  '(js2-global-externs (quote ("fluid" "jQuery" "require")))
  '(line-number-mode nil)
+ '(linum-format "%4d  ")
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
  '(tool-bar-mode nil))
