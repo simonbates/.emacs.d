@@ -55,7 +55,7 @@
  '(ediff-window-setup-function (quote ediff-setup-windows-plain))
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
- '(js2-global-externs (quote ("fluid" "jQuery")))
+ '(js2-global-externs (quote ("fluid" "jQuery" "require")))
  '(line-number-mode nil)
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
