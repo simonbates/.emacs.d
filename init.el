@@ -36,6 +36,22 @@
 (global-linum-mode 1)
 (electric-pair-mode 1)
 
+;; GPII
+
+(defun start-easit-oauth-integration ()
+  (interactive)
+  (let ((default-directory (concat (file-name-as-directory (getenv "GPII_UNIVERSAL_HOME"))
+                                   (file-name-as-directory "examples")
+                                   (file-name-as-directory "easit-oauth-integration"))))
+    (async-shell-command "node driver.js" "*easit-oauth-integration*")))
+
+(defun start-gpii-oauth2-sample-client ()
+  (interactive)
+  (let ((default-directory (concat (file-name-as-directory (getenv "GPII_UNIVERSAL_HOME"))
+                                   (file-name-as-directory "examples")
+                                   (file-name-as-directory "gpii-oauth2-sample-client"))))
+    (async-shell-command "node app.js" "*gpii-oauth2-sample-client*")))
+
 ;; customize
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
