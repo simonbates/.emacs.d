@@ -1,2 +1,2 @@
 (require 'meta-common)
-(require 'init-consolas-100)
+(set-face-attribute 'default nil :font "Ubuntu Mono-11")
