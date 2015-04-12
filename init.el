@@ -4,9 +4,6 @@
              '("melpa" . "http://melpa.org/packages/") t)
 (package-initialize)
 
-;; add settings to the load-path
-(add-to-list 'load-path (expand-file-name "settings" user-emacs-directory))
-
 ;; default config set
 (setq my-config-set 'default)
 
@@ -20,6 +17,32 @@
             (concat (file-name-as-directory "config-sets")
                     (concat (symbol-name my-config-set) ".el"))
             user-emacs-directory))
+
+;; helm
+(require 'helm-config)
+(global-set-key (kbd "M-x") 'helm-M-x)
+(global-set-key (kbd "C-x C-f") 'helm-find-files)
+(global-set-key (kbd "C-x b") 'helm-buffers-list)
+(helm-mode 1)
+
+;; projectile
+(projectile-global-mode 1)
+(require 'helm-projectile)
+(helm-projectile-on)
+
+;; yasnippet
+(require 'yasnippet)
+(yas-global-mode 1)
+
+;; company
+(require 'company)
+(global-set-key (kbd "C-M-i") 'company-complete)
+
+;; js2
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+(add-hook 'js2-mode-hook
+          (lambda ()
+            (company-mode 1)))
 
 ;; key bindings
 (global-set-key (kbd "M-o") 'other-window)
