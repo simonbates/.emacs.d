@@ -4,18 +4,18 @@
              '("melpa" . "http://melpa.org/packages/") t)
 (package-initialize)
 
-;; default config set
-(setq my-config-set 'default)
+;; default config
+(setq my-config-name 'default)
 
 ;; load machine local settings
 (setq my-local-init (expand-file-name "local.el" user-emacs-directory))
 (when (file-exists-p my-local-init)
       (load-file my-local-init))
 
-;; load config set
+;; load config
 (load-file (expand-file-name
-            (concat (file-name-as-directory "config-sets")
-                    (concat (symbol-name my-config-set) ".el"))
+            (concat (file-name-as-directory "configs")
+                    (concat (symbol-name my-config-name) ".el"))
             user-emacs-directory))
 
 ;; helm
