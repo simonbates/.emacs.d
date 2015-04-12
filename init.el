@@ -34,15 +34,36 @@
 (require 'yasnippet)
 (yas-global-mode 1)
 
+;; irony
+(require 'irony)
+(require 'irony-cdb)
+(defun my-irony-mode-hook ()
+  (define-key irony-mode-map [remap completion-at-point]
+    'irony-completion-at-point-async)
+  (define-key irony-mode-map [remap complete-symbol]
+    'irony-completion-at-point-async))
+(add-hook 'irony-mode-hook 'my-irony-mode-hook)
+(add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
+(eval-after-load 'company
+  '(add-to-list 'company-backends 'company-irony))
+
 ;; company
 (require 'company)
 (global-set-key (kbd "C-M-i") 'company-complete)
 
-;; js2
+;; JavaScript
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 (add-hook 'js2-mode-hook
           (lambda ()
             (company-mode 1)))
+
+;; C
+(add-hook 'c-mode-common-hook
+          (lambda ()
+            (semantic-mode 1)
+            (semantic-idle-summary-mode 1)
+            (company-mode 1)
+            (irony-mode 1)))
 
 ;; key bindings
 (global-set-key (kbd "M-o") 'other-window)
