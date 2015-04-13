@@ -4,22 +4,66 @@
              '("melpa" . "http://melpa.org/packages/") t)
 (package-initialize)
 
-;; add settings to the load-path
-(add-to-list 'load-path (expand-file-name "settings" user-emacs-directory))
-
-;; default config set
-(setq my-config-set 'default)
+;; default config
+(setq my-config-name 'default)
 
 ;; load machine local settings
 (setq my-local-init (expand-file-name "local.el" user-emacs-directory))
 (when (file-exists-p my-local-init)
       (load-file my-local-init))
 
-;; load config set
+;; load config
 (load-file (expand-file-name
-            (concat (file-name-as-directory "config-sets")
-                    (concat (symbol-name my-config-set) ".el"))
+            (concat (file-name-as-directory "configs")
+                    (concat (symbol-name my-config-name) ".el"))
             user-emacs-directory))
+
+;; helm
+(require 'helm-config)
+(global-set-key (kbd "M-x") 'helm-M-x)
+(global-set-key (kbd "C-x C-f") 'helm-find-files)
+(global-set-key (kbd "C-x b") 'helm-buffers-list)
+(helm-mode 1)
+
+;; projectile
+(projectile-global-mode 1)
+(require 'helm-projectile)
+(helm-projectile-on)
+
+;; yasnippet
+(require 'yasnippet)
+(yas-global-mode 1)
+
+;; irony
+(require 'irony)
+(require 'irony-cdb)
+(defun my-irony-mode-hook ()
+  (define-key irony-mode-map [remap completion-at-point]
+    'irony-completion-at-point-async)
+  (define-key irony-mode-map [remap complete-symbol]
+    'irony-completion-at-point-async))
+(add-hook 'irony-mode-hook 'my-irony-mode-hook)
+(add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
+(eval-after-load 'company
+  '(add-to-list 'company-backends 'company-irony))
+
+;; company
+(require 'company)
+(global-set-key (kbd "C-M-i") 'company-complete)
+
+;; JavaScript
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+(add-hook 'js2-mode-hook
+          (lambda ()
+            (company-mode 1)))
+
+;; C
+(add-hook 'c-mode-common-hook
+          (lambda ()
+            (semantic-mode 1)
+            (semantic-idle-summary-mode 1)
+            (company-mode 1)
+            (irony-mode 1)))
 
 ;; key bindings
 (global-set-key (kbd "M-o") 'other-window)
@@ -71,7 +115,7 @@
      (awk-mode . "awk")
      (other . "gnu"))))
  '(column-number-mode t)
- '(default-frame-alist (quote ((width . 120) (height . 56))))
+ '(default-frame-alist (quote ((width . 120) (height . 52))))
  '(ediff-split-window-function (quote split-window-horizontally))
  '(ediff-window-setup-function (quote ediff-setup-windows-plain))
  '(indent-tabs-mode nil)
