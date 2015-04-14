@@ -84,6 +84,12 @@
 ;; Markdown
 (add-to-list 'auto-mode-alist '("\\.md\\'" . gfm-mode))
 
+;; Git commit with an empty message
+(defun git-commit-with-empty-message ()
+  (interactive)
+  (if (y-or-n-p (concat "git commit " default-directory " with an empty message?"))
+      (shell-command "git commit --allow-empty-message -m ''")))
+
 ;; GPII
 
 (defun start-easit-oauth-integration ()
@@ -107,13 +113,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(blink-cursor-mode nil)
- '(c-default-style
-   (quote
-    ((c-mode . "stroustrup")
-     (c++-mode . "stroustrup")
-     (java-mode . "java")
-     (awk-mode . "awk")
-     (other . "gnu"))))
+ '(c-default-style (quote ((c-mode . "stroustrup") (c++-mode . "stroustrup") (java-mode . "java") (awk-mode . "awk") (other . "gnu"))))
  '(column-number-mode t)
  '(default-frame-alist (quote ((width . 120) (height . 52))))
  '(ediff-split-window-function (quote split-window-horizontally))
@@ -123,6 +123,7 @@
  '(js2-global-externs (quote ("__dirname" "fluid" "jQuery" "module" "require")))
  '(line-number-mode nil)
  '(linum-format "%4d ")
+ '(org-agenda-files (quote ("~/notes")))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
  '(tool-bar-mode nil))
