@@ -125,12 +125,16 @@
      (awk-mode . "awk")
      (other . "gnu"))))
  '(column-number-mode t)
+ '(company-dabbrev-downcase nil)
+ '(custom-enabled-themes (quote (misterioso)))
  '(default-frame-alist (quote ((width . 120) (height . 52))))
  '(ediff-split-window-function (quote split-window-horizontally))
  '(ediff-window-setup-function (quote ediff-setup-windows-plain))
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
- '(js2-global-externs (quote ("__dirname" "fluid" "jQuery" "module" "require")))
+ '(js2-global-externs
+   (quote
+    ("__dirname" "fluid" "gpii" "jQuery" "module" "require")))
  '(line-number-mode nil)
  '(linum-format "%4d ")
  '(org-agenda-files (quote ("~/notes")))
