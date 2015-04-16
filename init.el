@@ -67,6 +67,7 @@
 
 ;; key bindings
 (global-set-key (kbd "M-o") 'other-window)
+(global-set-key (kbd "<f6>") 'other-window)
 (global-set-key (kbd "<f10>") 'magit-status)
 
 ;; use UTF-8 with unix line endings
@@ -75,6 +76,9 @@
 ;; after ediff, put back windows as they were
 (add-hook 'ediff-before-setup-hook (lambda () (window-configuration-to-register 'e)))
 (add-hook 'ediff-quit-hook (lambda () (jump-to-register 'e)))
+
+;; show trailing whitespace
+(setq-default show-trailing-whitespace t)
 
 ;; global modes
 (global-linum-mode 1)
@@ -113,7 +117,13 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(blink-cursor-mode nil)
- '(c-default-style (quote ((c-mode . "stroustrup") (c++-mode . "stroustrup") (java-mode . "java") (awk-mode . "awk") (other . "gnu"))))
+ '(c-default-style
+   (quote
+    ((c-mode . "stroustrup")
+     (c++-mode . "stroustrup")
+     (java-mode . "java")
+     (awk-mode . "awk")
+     (other . "gnu"))))
  '(column-number-mode t)
  '(default-frame-alist (quote ((width . 120) (height . 52))))
  '(ediff-split-window-function (quote split-window-horizontally))
@@ -125,6 +135,7 @@
  '(linum-format "%4d ")
  '(org-agenda-files (quote ("~/notes")))
  '(scroll-bar-mode nil)
+ '(sgml-basic-offset 4)
  '(show-paren-mode t)
  '(tool-bar-mode nil))
 (custom-set-faces
