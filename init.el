@@ -126,7 +126,6 @@
      (other . "gnu"))))
  '(column-number-mode t)
  '(company-dabbrev-downcase nil)
- '(custom-enabled-themes (quote (misterioso)))
  '(default-frame-alist (quote ((width . 120) (height . 52))))
  '(ediff-split-window-function (quote split-window-horizontally))
  '(ediff-window-setup-function (quote ediff-setup-windows-plain))
