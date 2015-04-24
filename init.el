@@ -51,6 +51,11 @@
 (require 'company)
 (global-set-key (kbd "C-M-i") 'company-complete)
 
+;; Elisp
+(add-hook 'emacs-lisp-mode-hook
+          (lambda ()
+            (eldoc-mode 1)))
+
 ;; JavaScript
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 (add-hook 'js2-mode-hook
@@ -133,7 +138,7 @@
  '(inhibit-startup-screen t)
  '(js2-global-externs
    (quote
-    ("__dirname" "fluid" "gpii" "jQuery" "module" "require")))
+    ("__dirname" "fluid" "gpii" "jQuery" "jqUnit" "module" "require")))
  '(line-number-mode nil)
  '(linum-format "%4d ")
  '(org-agenda-files (quote ("~/notes")))
