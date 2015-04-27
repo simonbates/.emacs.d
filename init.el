@@ -34,6 +34,9 @@
 (require 'yasnippet)
 (yas-global-mode 1)
 
+;; magit
+(setq magit-last-seen-setup-instructions "1.4.0")
+
 ;; irony
 (require 'irony)
 (require 'irony-cdb)
@@ -72,7 +75,8 @@
 
 ;; key bindings
 (global-set-key (kbd "M-o") 'other-window)
-(global-set-key (kbd "<f6>") 'other-window)
+(global-set-key (kbd "<f7>") 'projectile-compile-project)
+(global-set-key (kbd "<f8>") 'projectile-test-project)
 (global-set-key (kbd "<f10>") 'magit-status)
 
 ;; use UTF-8 with unix line endings
