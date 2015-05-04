@@ -146,6 +146,7 @@
  '(line-number-mode nil)
  '(linum-format "%4d ")
  '(org-agenda-files (quote ("~/notes")))
+ '(scroll-bar-mode nil)
  '(sgml-basic-offset 4)
  '(show-paren-mode t)
  '(tool-bar-mode nil))
