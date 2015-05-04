@@ -142,11 +142,10 @@
  '(inhibit-startup-screen t)
  '(js2-global-externs
    (quote
-    ("__dirname" "fluid" "gpii" "jQuery" "jqUnit" "module" "require")))
+    ("__dirname" "fluid" "gpii" "jQuery" "jqUnit" "module" "require" "setTimeout")))
  '(line-number-mode nil)
  '(linum-format "%4d ")
  '(org-agenda-files (quote ("~/notes")))
- '(scroll-bar-mode nil)
  '(sgml-basic-offset 4)
  '(show-paren-mode t)
  '(tool-bar-mode nil))
