@@ -1,2 +1,2 @@
-(set-face-attribute 'default nil :font "Ubuntu Mono-12")
+(set-face-attribute 'default nil :font "DejaVu Sans Mono-10")
 (setenv "PATH" (concat "C:\\cygwin\\bin;" (getenv "PATH")))

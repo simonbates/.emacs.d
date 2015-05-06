@@ -18,21 +18,26 @@
                     (concat (symbol-name my-config-name) ".el"))
             user-emacs-directory))
 
+;; diminish
+(require 'diminish)
+
 ;; helm
 (require 'helm-config)
 (global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
 (global-set-key (kbd "C-x b") 'helm-buffers-list)
 (helm-mode 1)
+(diminish 'helm-mode)
 
 ;; projectile
 (projectile-global-mode 1)
 (require 'helm-projectile)
 (helm-projectile-on)
+(diminish 'projectile-mode)
 
 ;; yasnippet
-(require 'yasnippet)
-(yas-global-mode 1)
+; (require 'yasnippet)
+; (yas-global-mode 1)
 
 ;; magit
 (setq magit-last-seen-setup-instructions "1.4.0")
@@ -53,11 +58,13 @@
 ;; company
 (require 'company)
 (global-set-key (kbd "C-M-i") 'company-complete)
+(diminish 'company-mode)
 
 ;; Elisp
 (add-hook 'emacs-lisp-mode-hook
           (lambda ()
             (eldoc-mode 1)))
+(eval-after-load "eldoc" '(diminish 'eldoc-mode))
 
 ;; JavaScript
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
