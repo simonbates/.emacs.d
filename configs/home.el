@@ -1,1 +1,1 @@
-(set-face-attribute 'default nil :font "Ubuntu Mono-13")
+(set-face-attribute 'default nil :font "DejaVu Sans Mono-11")
