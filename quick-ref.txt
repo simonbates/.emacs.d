@@ -2,6 +2,9 @@ Files and Buffers
 -----------------
 
 C-x C-f                 Find file
+C-x C-r                 find-file-read-only
+C-x C-q                 read-only-mode
+C-x RET r               revert-buffer-with-coding-system
 C-x C-s                 Save buffer
 C-x C-b                 List buffers
 C-x b                   Select buffer
