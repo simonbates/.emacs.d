@@ -102,8 +102,8 @@
 (global-set-key (kbd "<f8>") 'projectile-test-project)
 (global-set-key (kbd "<f10>") 'magit-status)
 
-;; use UTF-8 with unix line endings
-(setq-default buffer-file-coding-system 'utf-8-unix)
+;; default to UTF-8 with unix line endings
+(prefer-coding-system 'utf-8-unix)
 
 ;; after ediff, put back windows as they were
 (add-hook 'ediff-before-setup-hook (lambda () (window-configuration-to-register 'e)))
