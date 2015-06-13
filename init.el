@@ -29,14 +29,22 @@
 (helm-mode 1)
 (diminish 'helm-mode)
 
+;; helm-gtags
+(eval-after-load "helm-gtags"
+  '(progn
+     (define-key helm-gtags-mode-map (kbd "M-.") 'helm-gtags-find-tag)
+     (define-key helm-gtags-mode-map (kbd "M-*") 'helm-gtags-pop-stack)))
+
 ;; projectile
 (projectile-global-mode 1)
 (require 'helm-projectile)
 (helm-projectile-on)
+;; bind projectile-grep rather than helm-projectile-grep
+(define-key projectile-command-map (kbd "s g") 'projectile-grep)
 (diminish 'projectile-mode)
 
 ;; yasnippet
-; (require 'yasnippet)
+(require 'yasnippet)
 ; (yas-global-mode 1)
 
 ;; magit
@@ -45,12 +53,16 @@
 ;; irony
 (require 'irony)
 (require 'irony-cdb)
-(defun my-irony-mode-hook ()
-  (define-key irony-mode-map [remap completion-at-point]
-    'irony-completion-at-point-async)
-  (define-key irony-mode-map [remap complete-symbol]
-    'irony-completion-at-point-async))
-(add-hook 'irony-mode-hook 'my-irony-mode-hook)
+(require 'irony-eldoc)
+(add-hook 'irony-mode-hook
+          (lambda ()
+            (define-key irony-mode-map [remap completion-at-point]
+              'irony-completion-at-point-async)
+            (define-key irony-mode-map [remap complete-symbol]
+              'irony-completion-at-point-async)
+            (yas-minor-mode 1)
+            (eldoc-mode 1)
+            (irony-eldoc 1)))
 (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
 (eval-after-load 'company
   '(add-to-list 'company-backends 'company-irony))
@@ -59,6 +71,11 @@
 (require 'company)
 (global-set-key (kbd "C-M-i") 'company-complete)
 (diminish 'company-mode)
+
+;; grep
+(add-hook 'grep-mode-hook
+          (lambda ()
+            (setq truncate-lines t)))
 
 ;; Elisp
 (add-hook 'emacs-lisp-mode-hook
@@ -75,10 +92,9 @@
 ;; C
 (add-hook 'c-mode-common-hook
           (lambda ()
-            (semantic-mode 1)
-            (semantic-idle-summary-mode 1)
             (company-mode 1)
-            (irony-mode 1)))
+            (irony-mode 1)
+            (helm-gtags-mode 1)))
 
 ;; key bindings
 (global-set-key (kbd "M-o") 'other-window)

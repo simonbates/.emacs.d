@@ -36,6 +36,12 @@ M-s .                   isearch-forward-symbol-at-point (C-s for next match)
 
 M-x helm-imenu          Jump to function
 
+helm-gtags
+----------
+
+M-.                     Find tag
+M-*                     Pop mark
+
 Editing
 -------
 
@@ -60,7 +66,7 @@ C-x 0                   Delete window
 C-x 1                   Delete other windows
 C-x 2                   Split window below
 C-x 3                   Split window right
-C-x o, M-o              Other window
+C-x o, [M-o]            Other window
 C-l                     Recenter top bottom
 
 Help
@@ -86,8 +92,11 @@ Projectile
 
 C-c p p                 Switch project
 C-c p f                 Find file in project
+C-c p s g               projectile-grep
+[F7]                    Compile project
+[F8]                    Run tests
 
 Magit
 -----
 
-F10                     magit-status
+[F10]                   magit-status
