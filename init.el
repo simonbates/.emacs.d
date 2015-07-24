@@ -43,6 +43,21 @@
 (define-key projectile-command-map (kbd "s g") 'projectile-grep)
 (diminish 'projectile-mode)
 
+;; org-present
+
+(eval-after-load "org-present"
+  '(progn
+     (add-hook 'org-present-mode-hook
+               (lambda ()
+                 (org-present-big)
+                 (org-display-inline-images)
+                 (org-present-read-only)))
+     (add-hook 'org-present-mode-quit-hook
+               (lambda ()
+                 (org-present-small)
+                 (org-remove-inline-images)
+                 (org-present-read-write)))))
+
 ;; yasnippet
 (require 'yasnippet)
 ; (yas-global-mode 1)
