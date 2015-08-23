@@ -43,6 +43,10 @@
 (define-key projectile-command-map (kbd "s g") 'projectile-grep)
 (diminish 'projectile-mode)
 
+;; org mode
+
+(setq org-src-fontify-natively t)
+
 ;; org-present
 
 (eval-after-load "org-present"
