@@ -132,9 +132,9 @@
 (setq-default show-trailing-whitespace t)
 
 ;; global modes
-(global-linum-mode 1)
+;(global-linum-mode 1)
+;(global-hl-line-mode 1)
 (electric-pair-mode 1)
-(global-hl-line-mode 1)
 
 ;; Markdown
 (add-to-list 'auto-mode-alist '("\\.md\\'" . gfm-mode))
@@ -178,7 +178,7 @@
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
  '(js2-global-externs (quote ("__dirname" "fluid" "gpii" "jQuery" "jqUnit" "module" "require" "setTimeout")))
- '(line-number-mode nil)
+ '(line-number-mode t)
  '(linum-format "%4d ")
  '(org-agenda-files (quote ("~/notes")))
  '(safe-local-variable-values (quote ((eval progn (when (require (quote projectile) nil t) (puthash (projectile-project-root) "cd build && make" projectile-compilation-cmd-map) (puthash (projectile-project-root) "cd build && ctest --output-on-failure" projectile-test-cmd-map))))))
