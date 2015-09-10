@@ -168,20 +168,45 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(blink-cursor-mode nil)
- '(c-default-style (quote ((c-mode . "stroustrup") (c++-mode . "stroustrup") (java-mode . "java") (awk-mode . "awk") (other . "gnu"))))
+ '(c-default-style
+   (quote
+    ((c-mode . "stroustrup")
+     (c++-mode . "stroustrup")
+     (java-mode . "java")
+     (awk-mode . "awk")
+     (other . "gnu"))))
  '(column-number-mode t)
  '(company-dabbrev-downcase nil)
+ '(custom-enabled-themes (quote (leuven)))
+ '(custom-safe-themes
+   (quote
+    ("9e1e2e7590c2f443c09a3f6240a05ada53f06566a6873c37eeae10d13dc372c9" default)))
  '(default-frame-alist (quote ((width . 120) (height . 52))))
  '(delete-selection-mode nil)
  '(ediff-split-window-function (quote split-window-horizontally))
  '(ediff-window-setup-function (quote ediff-setup-windows-plain))
+ '(fci-rule-color "#383838")
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
- '(js2-global-externs (quote ("__dirname" "fluid" "gpii" "jQuery" "jqUnit" "module" "require" "setTimeout")))
+ '(js2-global-externs
+   (quote
+    ("__dirname" "fluid" "gpii" "jQuery" "jqUnit" "module" "require" "setTimeout")))
  '(line-number-mode t)
  '(linum-format "%4d ")
  '(org-agenda-files (quote ("~/notes")))
- '(safe-local-variable-values (quote ((eval progn (when (require (quote projectile) nil t) (puthash (projectile-project-root) "cd build && make" projectile-compilation-cmd-map) (puthash (projectile-project-root) "cd build && ctest --output-on-failure" projectile-test-cmd-map))))))
+ '(safe-local-variable-values
+   (quote
+    ((eval progn
+           (when
+               (require
+                (quote projectile)
+                nil t)
+             (puthash
+              (projectile-project-root)
+              "cd build && make" projectile-compilation-cmd-map)
+             (puthash
+              (projectile-project-root)
+              "cd build && ctest --output-on-failure" projectile-test-cmd-map))))))
  '(scroll-bar-mode nil)
  '(sgml-basic-offset 4)
  '(show-paren-mode t)
