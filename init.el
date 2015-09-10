@@ -207,7 +207,6 @@
              (puthash
               (projectile-project-root)
               "cd build && ctest --output-on-failure" projectile-test-cmd-map))))))
- '(scroll-bar-mode nil)
  '(sgml-basic-offset 4)
  '(show-paren-mode t)
  '(tool-bar-mode nil))
