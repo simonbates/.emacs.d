@@ -32,8 +32,10 @@
 ;; helm-gtags
 (eval-after-load "helm-gtags"
   '(progn
-     (define-key helm-gtags-mode-map (kbd "M-.") 'helm-gtags-find-tag)
-     (define-key helm-gtags-mode-map (kbd "M-*") 'helm-gtags-pop-stack)))
+     (define-key helm-gtags-mode-map (kbd "M-.") 'helm-gtags-dwim)
+     (define-key helm-gtags-mode-map (kbd "M-*") 'helm-gtags-pop-stack)
+     (define-key helm-gtags-mode-map (kbd "C-c s") 'helm-gtags-select)
+     (define-key helm-gtags-mode-map (kbd "C-c f") 'helm-gtags-parse-file)))
 
 ;; projectile
 (projectile-global-mode 1)
@@ -44,11 +46,9 @@
 (diminish 'projectile-mode)
 
 ;; org mode
-
 (setq org-src-fontify-natively t)
 
 ;; org-present
-
 (eval-after-load "org-present"
   '(progn
      (add-hook 'org-present-mode-hook
@@ -120,6 +120,7 @@
 (global-set-key (kbd "<f7>") 'projectile-compile-project)
 (global-set-key (kbd "<f8>") 'projectile-test-project)
 (global-set-key (kbd "<f10>") 'magit-status)
+(global-unset-key (kbd "C-v"))
 
 ;; default to UTF-8 with unix line endings
 (prefer-coding-system 'utf-8-unix)

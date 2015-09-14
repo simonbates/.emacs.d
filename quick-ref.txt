@@ -34,13 +34,13 @@ C-M-s                   Regexp search forward
 C-M-r                   Regexp search backward
 M-s .                   isearch-forward-symbol-at-point (C-s for next match)
 
-M-x helm-imenu          Jump to function
-
 helm-gtags
 ----------
 
-M-.                     Find tag
+M-.                     helm-gtags-dwim
 M-*                     Pop mark
+[C-c s]                 helm-gtags-select
+[C-c f]                 helm-gtags-parse-file
 
 Editing
 -------
