@@ -115,13 +115,6 @@
             (irony-mode 1)
             (helm-gtags-mode 1)))
 
-;; key bindings
-(global-set-key (kbd "M-o") 'other-window)
-(global-set-key (kbd "<f7>") 'projectile-compile-project)
-(global-set-key (kbd "<f8>") 'projectile-test-project)
-(global-set-key (kbd "<f10>") 'magit-status)
-(global-unset-key (kbd "C-v"))
-
 ;; default to UTF-8 with unix line endings
 (prefer-coding-system 'utf-8-unix)
 
@@ -134,8 +127,9 @@
 
 ;; global modes
 ;(global-linum-mode 1)
-;(global-hl-line-mode 1)
+(global-hl-line-mode 1)
 (electric-pair-mode 1)
+(size-indication-mode 1)
 
 ;; Markdown
 (add-to-list 'auto-mode-alist '("\\.md\\'" . gfm-mode))
@@ -145,6 +139,14 @@
   (interactive)
   (if (y-or-n-p (concat "git commit " default-directory " with an empty message?"))
       (shell-command "git commit --allow-empty-message -m ''")))
+
+;; git grep project
+(defun git-grep-project ()
+  (interactive)
+  (let* ((default-directory (projectile-project-root))
+         (pattern (grep-read-regexp))
+         (command (grep-expand-template "git grep --untracked --line-number --ignore-case <R>" pattern)))
+    (compilation-start command 'grep-mode)))
 
 ;; GPII
 
@@ -162,6 +164,14 @@
                                    (file-name-as-directory "gpii-oauth2-sample-client"))))
     (async-shell-command "node app.js" "*gpii-oauth2-sample-client*")))
 
+;; key bindings
+(global-set-key (kbd "M-o") 'other-window)
+(global-set-key (kbd "<f7>") 'projectile-compile-project)
+(global-set-key (kbd "<f8>") 'projectile-test-project)
+(global-set-key (kbd "<f10>") 'magit-status)
+(global-set-key (kbd "C-c g") 'git-grep-project)
+(global-unset-key (kbd "C-v"))
+
 ;; customize
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -178,15 +188,13 @@
      (other . "gnu"))))
  '(column-number-mode t)
  '(company-dabbrev-downcase nil)
- '(custom-enabled-themes (quote (leuven)))
- '(custom-safe-themes
-   (quote
-    ("9e1e2e7590c2f443c09a3f6240a05ada53f06566a6873c37eeae10d13dc372c9" default)))
  '(default-frame-alist (quote ((width . 120) (height . 52))))
  '(delete-selection-mode nil)
  '(ediff-split-window-function (quote split-window-horizontally))
  '(ediff-window-setup-function (quote ediff-setup-windows-plain))
  '(fci-rule-color "#383838")
+ '(helm-buffer-details-flag nil)
+ '(helm-buffer-max-length nil)
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
  '(js2-global-externs
@@ -194,6 +202,7 @@
     ("__dirname" "fluid" "gpii" "jQuery" "jqUnit" "module" "require" "setTimeout")))
  '(line-number-mode t)
  '(linum-format "%4d ")
+ '(menu-bar-mode nil)
  '(org-agenda-files (quote ("~/notes")))
  '(safe-local-variable-values
    (quote
@@ -208,6 +217,7 @@
              (puthash
               (projectile-project-root)
               "cd build && ctest --output-on-failure" projectile-test-cmd-map))))))
+ '(scroll-bar-mode nil)
  '(sgml-basic-offset 4)
  '(show-paren-mode t)
  '(tool-bar-mode nil))
