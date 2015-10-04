@@ -145,7 +145,7 @@
   (interactive)
   (let* ((default-directory (projectile-project-root))
          (pattern (grep-read-regexp))
-         (command (grep-expand-template "git grep --untracked --line-number --ignore-case <R>" pattern)))
+         (command (grep-expand-template "git --no-pager grep --untracked --line-number --ignore-case <R>" pattern)))
     (compilation-start command 'grep-mode)))
 
 ;; GPII
