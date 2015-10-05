@@ -218,6 +218,7 @@
               (projectile-project-root)
               "cd build && ctest --output-on-failure" projectile-test-cmd-map))))))
  '(scroll-bar-mode nil)
+ '(sentence-end-double-space nil)
  '(sgml-basic-offset 4)
  '(show-paren-mode t)
  '(tool-bar-mode nil))

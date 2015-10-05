@@ -3,8 +3,9 @@
 /irony/
 /semanticdb/
 /server/
+/url/
 /local.el
 /projectile-bookmarks.eld
 /projectile.cache
-/url/
+/session.*
 *~
