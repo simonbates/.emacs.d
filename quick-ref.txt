@@ -34,6 +34,14 @@ C-M-s                   Regexp search forward
 C-M-r                   Regexp search backward
 M-s .                   isearch-forward-symbol-at-point (C-s for next match)
 
+Scrolling
+---------
+
+M-pgup                  Scroll other window
+M-pgdn                  Scroll other window
+[M-up]                  Scroll by one line
+[M-down]                Scroll by one line
+
 helm-gtags
 ----------
 

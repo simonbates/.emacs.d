@@ -170,6 +170,8 @@
 (global-set-key (kbd "<f8>") 'projectile-test-project)
 (global-set-key (kbd "<f10>") 'magit-status)
 (global-set-key (kbd "C-c g") 'git-grep-project)
+(global-set-key (kbd "<M-up>") 'scroll-down-line)
+(global-set-key (kbd "<M-down>") 'scroll-up-line)
 (global-unset-key (kbd "C-v"))
 
 ;; customize
@@ -203,6 +205,7 @@
  '(line-number-mode t)
  '(linum-format "%4d ")
  '(menu-bar-mode nil)
+ '(next-screen-context-lines 4)
  '(org-agenda-files (quote ("~/notes")))
  '(safe-local-variable-values
    (quote
@@ -218,6 +221,8 @@
               (projectile-project-root)
               "cd build && ctest --output-on-failure" projectile-test-cmd-map))))))
  '(scroll-bar-mode nil)
+ '(scroll-error-top-bottom t)
+ '(scroll-step 0)
  '(sentence-end-double-space nil)
  '(sgml-basic-offset 4)
  '(show-paren-mode t)
