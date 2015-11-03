@@ -204,6 +204,7 @@
     ("__dirname" "fluid" "gpii" "jQuery" "jqUnit" "module" "require" "setTimeout")))
  '(line-number-mode t)
  '(linum-format "%4d ")
+ '(magit-ediff-dwim-show-on-hunks t)
  '(menu-bar-mode nil)
  '(next-screen-context-lines 4)
  '(org-agenda-files (quote ("~/notes")))
