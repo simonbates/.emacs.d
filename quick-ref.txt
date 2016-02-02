@@ -54,6 +54,7 @@ Editing
 -------
 
 C-space                 Mark
+C-x h                   Mark whole buffer
 M-w                     Copy region
 C-w                     Kill region
 C-d                     Delete character
