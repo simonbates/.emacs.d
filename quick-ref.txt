@@ -89,6 +89,7 @@ Lisp
 ----
 
 C-x C-e                 Eval last sexp
+M-:                     Eval expression, from minibuffer
 
 Helm
 ----
