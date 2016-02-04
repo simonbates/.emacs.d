@@ -109,11 +109,12 @@
             (company-mode 1)))
 
 ;; C
-(add-hook 'c-mode-common-hook
-          (lambda ()
-            (company-mode 1)
-            (irony-mode 1)
-            (helm-gtags-mode 1)))
+(defun my-c-mode-hook ()
+  (company-mode 1)
+  (irony-mode 1)
+  (helm-gtage-mode 1))
+(add-hook 'c-mode-hook 'my-c-mode-hook)
+(add-hook 'c++-mode-hook 'my-c-mode-hook)
 
 ;; default to UTF-8 with unix line endings
 (prefer-coding-system 'utf-8-unix)
