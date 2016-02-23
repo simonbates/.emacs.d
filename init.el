@@ -208,6 +208,7 @@
  '(menu-bar-mode nil)
  '(next-screen-context-lines 4)
  '(org-agenda-files (quote ("~/notes")))
+ '(org-catch-invisible-edits (quote error))
  '(safe-local-variable-values
    (quote
     ((eval progn
