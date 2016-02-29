@@ -111,3 +111,8 @@ Magit
 -----
 
 [F10]                   magit-status
+
+GUD
+---
+
+C-x C-a C-b             Set a breakpoint

@@ -196,6 +196,7 @@
  '(ediff-split-window-function (quote split-window-horizontally))
  '(ediff-window-setup-function (quote ediff-setup-windows-plain))
  '(fci-rule-color "#383838")
+ '(gdb-many-windows t)
  '(helm-buffer-details-flag nil)
  '(helm-buffer-max-length nil)
  '(indent-tabs-mode nil)
