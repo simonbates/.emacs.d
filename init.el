@@ -112,7 +112,7 @@
 (defun my-c-mode-hook ()
   (company-mode 1)
   (irony-mode 1)
-  (helm-gtage-mode 1))
+  (helm-gtags-mode 1))
 (add-hook 'c-mode-hook 'my-c-mode-hook)
 (add-hook 'c++-mode-hook 'my-c-mode-hook)
 
