@@ -29,6 +29,11 @@
 (helm-mode 1)
 (diminish 'helm-mode)
 
+(setq helm-mode-no-completion-in-region-in-modes
+      '(circe-channel-mode
+        circe-query-mode
+        circe-server-mode))
+
 ;; helm-gtags
 (eval-after-load "helm-gtags"
   '(progn
@@ -132,6 +137,33 @@
 (electric-pair-mode 1)
 (size-indication-mode 1)
 
+;; Circe
+
+(setq circe-network-options
+      (list (list "Freenode"
+                  :nick my-freenode-nick
+                  :realname my-freenode-realname
+                  :channels '("#fluid-design" "#fluid-ops" "#fluid-tech" "#fluid-work"))))
+
+(setq circe-use-cycle-completion t)
+
+(add-hook 'circe-chat-mode-hook
+          (lambda ()
+            (lui-set-prompt
+             (concat (propertize (concat (buffer-name) ">")
+                                 'face 'circe-prompt-face)
+                     " "))))
+
+(setq lui-highlight-keywords '("fluid-everyone"))
+
+(setq lui-flyspell-p t)
+(setq lui-flyspell-alist '((".*" "american")))
+
+(add-hook 'lui-mode-hook
+          (lambda ()
+            (setq-local show-trailing-whitespace nil)
+            (setq-local global-hl-line-mode nil)))
+
 ;; Markdown
 (add-to-list 'auto-mode-alist '("\\.md\\'" . gfm-mode))
 
@@ -189,6 +221,7 @@
      (java-mode . "java")
      (awk-mode . "awk")
      (other . "gnu"))))
+ '(circe-highlight-nick-type (quote all))
  '(column-number-mode t)
  '(company-dabbrev-downcase nil)
  '(default-frame-alist (quote ((width . 120) (height . 52))))
@@ -213,7 +246,8 @@
  '(org-catch-invisible-edits (quote error))
  '(safe-local-variable-values
    (quote
-    ((eval progn
+    ((sgml-basic-offset . 2)
+     (eval progn
            (when
                (require
                 (quote projectile)
