@@ -32,7 +32,8 @@
 (setq helm-mode-no-completion-in-region-in-modes
       '(circe-channel-mode
         circe-query-mode
-        circe-server-mode))
+        circe-server-mode
+        erc-mode))
 
 ;; helm-gtags
 (eval-after-load "helm-gtags"
@@ -137,6 +138,8 @@
 (electric-pair-mode 1)
 (size-indication-mode 1)
 
+(setq-default completion-ignore-case t)
+
 ;; Circe
 
 (setq circe-network-options
@@ -160,6 +163,28 @@
 (setq lui-flyspell-alist '((".*" "american")))
 
 (add-hook 'lui-mode-hook
+          (lambda ()
+            (setq-local show-trailing-whitespace nil)
+            (setq-local global-hl-line-mode nil)))
+
+;; ERC
+
+(require 'erc)
+
+(add-to-list 'erc-modules 'notifications)
+
+(setq erc-nick my-erc-nick)
+
+(erc-spelling-mode 1)
+
+(setq erc-prompt (lambda () (concat (buffer-name) ">")))
+
+(setq erc-autojoin-channels-alist
+      '(("freenode.net" "#fluid-design" "#fluid-ops" "#fluid-tech" "#fluid-work")))
+
+(setq erc-keywords '("fluid-everyone"))
+
+(add-hook 'erc-mode-hook
           (lambda ()
             (setq-local show-trailing-whitespace nil)
             (setq-local global-hl-line-mode nil)))
@@ -270,4 +295,5 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(erc-current-nick-face ((t (:background "cyan" :weight bold))))
+ '(erc-timestamp-face ((t (:foreground "sea green")))))
