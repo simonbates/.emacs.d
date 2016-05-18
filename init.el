@@ -296,4 +296,5 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(erc-current-nick-face ((t (:background "cyan" :weight bold))))
+ '(erc-keyword-face ((t (:background "chartreuse" :weight bold))))
  '(erc-timestamp-face ((t (:foreground "sea green")))))
