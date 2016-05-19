@@ -253,6 +253,9 @@
  '(delete-selection-mode nil)
  '(ediff-split-window-function (quote split-window-horizontally))
  '(ediff-window-setup-function (quote ediff-setup-windows-plain))
+ '(erc-fill-column 83)
+ '(erc-fill-function (quote erc-fill-static))
+ '(erc-fill-static-center 19)
  '(fci-rule-color "#383838")
  '(gdb-many-windows t)
  '(helm-buffer-details-flag nil)
@@ -295,6 +298,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(erc-button ((t (:underline t :weight bold))))
  '(erc-current-nick-face ((t (:background "cyan" :weight bold))))
  '(erc-keyword-face ((t (:background "chartreuse" :weight bold))))
  '(erc-timestamp-face ((t (:foreground "sea green")))))
