@@ -30,10 +30,7 @@
 (diminish 'helm-mode)
 
 (setq helm-mode-no-completion-in-region-in-modes
-      '(circe-channel-mode
-        circe-query-mode
-        circe-server-mode
-        erc-mode))
+      '(erc-mode))
 
 ;; helm-gtags
 (eval-after-load "helm-gtags"
@@ -132,40 +129,14 @@
 ;; show trailing whitespace
 (setq-default show-trailing-whitespace t)
 
+;; ignore case on completion
+(setq-default completion-ignore-case t)
+
 ;; global modes
 ;(global-linum-mode 1)
 (global-hl-line-mode 1)
 (electric-pair-mode 1)
 (size-indication-mode 1)
-
-(setq-default completion-ignore-case t)
-
-;; Circe
-
-(setq circe-network-options
-      (list (list "Freenode"
-                  :nick my-freenode-nick
-                  :realname my-freenode-realname
-                  :channels '("#fluid-design" "#fluid-ops" "#fluid-tech" "#fluid-work"))))
-
-(setq circe-use-cycle-completion t)
-
-(add-hook 'circe-chat-mode-hook
-          (lambda ()
-            (lui-set-prompt
-             (concat (propertize (concat (buffer-name) ">")
-                                 'face 'circe-prompt-face)
-                     " "))))
-
-(setq lui-highlight-keywords '("fluid-everyone"))
-
-(setq lui-flyspell-p t)
-(setq lui-flyspell-alist '((".*" "american")))
-
-(add-hook 'lui-mode-hook
-          (lambda ()
-            (setq-local show-trailing-whitespace nil)
-            (setq-local global-hl-line-mode nil)))
 
 ;; ERC
 
@@ -188,6 +159,14 @@
           (lambda ()
             (setq-local show-trailing-whitespace nil)
             (setq-local global-hl-line-mode nil)))
+
+;; eshell
+(add-hook 'eshell-mode-hook
+  '(lambda ()
+     (define-key eshell-mode-map (kbd "<up>") 'previous-line)
+     (define-key eshell-mode-map (kbd "<down>") 'next-line)
+     (setq-local show-trailing-whitespace nil)
+     (setq-local global-hl-line-mode nil)))
 
 ;; Markdown
 (add-to-list 'auto-mode-alist '("\\.md\\'" . gfm-mode))
@@ -246,7 +225,6 @@
      (java-mode . "java")
      (awk-mode . "awk")
      (other . "gnu"))))
- '(circe-highlight-nick-type (quote all))
  '(column-number-mode t)
  '(company-dabbrev-downcase nil)
  '(default-frame-alist (quote ((width . 120) (height . 52))))
