@@ -227,6 +227,7 @@
      (other . "gnu"))))
  '(column-number-mode t)
  '(company-dabbrev-downcase nil)
+ '(custom-enabled-themes (quote (wombat)))
  '(default-frame-alist (quote ((width . 120) (height . 52))))
  '(delete-selection-mode nil)
  '(ediff-split-window-function (quote split-window-horizontally))
@@ -276,7 +277,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(cursor ((t (:background "#f8f8f8"))))
  '(erc-button ((t (:underline t :weight bold))))
- '(erc-current-nick-face ((t (:background "cyan" :weight bold))))
- '(erc-keyword-face ((t (:background "chartreuse" :weight bold))))
- '(erc-timestamp-face ((t (:foreground "sea green")))))
+ '(erc-current-nick-face ((t (:background "cyan" :foreground "black" :weight bold))))
+ '(erc-keyword-face ((t (:background "chartreuse" :foreground "black" :weight bold))))
+ '(erc-notice-face ((t (:foreground "#c8bfff" :weight bold)))))
