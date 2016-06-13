@@ -158,7 +158,9 @@
 (add-hook 'erc-mode-hook
           (lambda ()
             (setq-local show-trailing-whitespace nil)
-            (setq-local global-hl-line-mode nil)))
+            (setq-local global-hl-line-mode nil)
+            (setq-local scroll-step 1)
+            (setq-local scroll-conservatively 10000)))
 
 ;; eshell
 (add-hook 'eshell-mode-hook
@@ -166,7 +168,8 @@
      (define-key eshell-mode-map (kbd "<up>") 'previous-line)
      (define-key eshell-mode-map (kbd "<down>") 'next-line)
      (setq-local show-trailing-whitespace nil)
-     (setq-local global-hl-line-mode nil)))
+     (setq-local scroll-step 1)
+     (setq-local scroll-conservatively 10000)))
 
 ;; Markdown
 (add-to-list 'auto-mode-alist '("\\.md\\'" . gfm-mode))
@@ -234,6 +237,7 @@
  '(erc-fill-column 83)
  '(erc-fill-function (quote erc-fill-static))
  '(erc-fill-static-center 19)
+ '(eshell-scroll-show-maximum-output nil)
  '(fci-rule-color "#383838")
  '(gdb-many-windows t)
  '(helm-buffer-details-flag nil)
