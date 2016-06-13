@@ -280,5 +280,7 @@
  '(cursor ((t (:background "#f8f8f8"))))
  '(erc-button ((t (:underline t :weight bold))))
  '(erc-current-nick-face ((t (:background "cyan" :foreground "black" :weight bold))))
+ '(erc-input-face ((t (:foreground "orange"))))
  '(erc-keyword-face ((t (:background "chartreuse" :foreground "black" :weight bold))))
+ '(erc-my-nick-face ((t (:foreground "orange" :weight bold))))
  '(erc-notice-face ((t (:foreground "#c8bfff" :weight bold)))))
