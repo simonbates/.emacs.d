@@ -141,13 +141,9 @@
 ;; ERC
 
 (require 'erc)
-
 (add-to-list 'erc-modules 'notifications)
-
 (setq erc-nick my-erc-nick)
-
 (erc-spelling-mode 1)
-
 (setq erc-prompt (lambda () (concat (buffer-name) ">")))
 
 (setq erc-autojoin-channels-alist
@@ -187,22 +183,6 @@
          (pattern (grep-read-regexp))
          (command (grep-expand-template "git --no-pager grep --untracked --line-number --ignore-case <R>" pattern)))
     (compilation-start command 'grep-mode)))
-
-;; GPII
-
-(defun start-easit-oauth-integration ()
-  (interactive)
-  (let ((default-directory (concat (file-name-as-directory (getenv "GPII_UNIVERSAL_HOME"))
-                                   (file-name-as-directory "examples")
-                                   (file-name-as-directory "easit-oauth-integration"))))
-    (async-shell-command "node driver.js" "*easit-oauth-integration*")))
-
-(defun start-gpii-oauth2-sample-client ()
-  (interactive)
-  (let ((default-directory (concat (file-name-as-directory (getenv "GPII_UNIVERSAL_HOME"))
-                                   (file-name-as-directory "examples")
-                                   (file-name-as-directory "gpii-oauth2-sample-client"))))
-    (async-shell-command "node app.js" "*gpii-oauth2-sample-client*")))
 
 ;; key bindings
 (global-set-key (kbd "M-o") 'other-window)
@@ -288,4 +268,4 @@
  '(erc-keyword-face ((t (:background "chartreuse" :foreground "black" :weight bold))))
  '(erc-my-nick-face ((t (:foreground "orange" :weight bold))))
  '(erc-notice-face ((t (:foreground "#c8bfff" :weight bold))))
- '(hl-line ((t (:background "#454545")))))
+ '(hl-line ((t (:background "#404040")))))
