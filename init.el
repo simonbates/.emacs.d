@@ -48,6 +48,10 @@
 (define-key projectile-command-map (kbd "s g") 'projectile-grep)
 (diminish 'projectile-mode)
 
+;; Neo Tree
+(require 'neotree)
+(setq projectile-switch-project-action 'neotree-projectile-action)
+
 ;; org mode
 (setq org-src-fontify-natively t)
 
@@ -188,6 +192,7 @@
 (global-set-key (kbd "M-o") 'other-window)
 (global-set-key (kbd "<f7>") 'projectile-compile-project)
 (global-set-key (kbd "<f8>") 'projectile-test-project)
+(global-set-key (kbd "<f9>") 'neotree-toggle)
 (global-set-key (kbd "<f10>") 'magit-status)
 (global-set-key (kbd "C-c g") 'git-grep-project)
 (global-set-key (kbd "<M-up>") 'scroll-down-line)
@@ -232,6 +237,9 @@
  '(linum-format "%4d ")
  '(magit-ediff-dwim-show-on-hunks t)
  '(menu-bar-mode nil)
+ '(neo-auto-indent-point t)
+ '(neo-theme (quote arrow))
+ '(neo-window-width 38)
  '(next-screen-context-lines 4)
  '(org-agenda-files (quote ("~/notes")))
  '(org-catch-invisible-edits (quote error))
