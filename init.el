@@ -48,10 +48,6 @@
 (define-key projectile-command-map (kbd "s g") 'projectile-grep)
 (diminish 'projectile-mode)
 
-;; Neo Tree
-(require 'neotree)
-(setq projectile-switch-project-action 'neotree-projectile-action)
-
 ;; org mode
 (setq org-src-fontify-natively t)
 
@@ -238,6 +234,7 @@
  '(magit-ediff-dwim-show-on-hunks t)
  '(menu-bar-mode nil)
  '(neo-auto-indent-point t)
+ '(neo-show-hidden-files t)
  '(neo-theme (quote arrow))
  '(neo-window-width 38)
  '(next-screen-context-lines 4)
@@ -276,4 +273,4 @@
  '(erc-keyword-face ((t (:background "chartreuse" :foreground "black" :weight bold))))
  '(erc-my-nick-face ((t (:foreground "orange" :weight bold))))
  '(erc-notice-face ((t (:foreground "#c8bfff" :weight bold))))
- '(hl-line ((t (:background "#404040")))))
+ '(hl-line ((t (:background "black")))))
