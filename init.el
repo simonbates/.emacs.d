@@ -179,6 +179,13 @@
          (command (grep-expand-template "git --no-pager grep --untracked --line-number --ignore-case <R>" pattern)))
     (compilation-start command 'grep-mode)))
 
+;; Find project TODOs
+(defun git-grep-todo ()
+  (interactive)
+  (let* ((default-directory (projectile-project-root))
+         (command "git --no-pager grep --untracked --line-number TODO"))
+    (compilation-start command 'grep-mode)))
+
 ;; key bindings
 (global-set-key (kbd "M-o") 'other-window)
 (global-set-key (kbd "<f7>") 'projectile-compile-project)
@@ -186,6 +193,7 @@
 (global-set-key (kbd "<f9>") 'neotree-toggle)
 (global-set-key (kbd "<f10>") 'magit-status)
 (global-set-key (kbd "C-c g") 'git-grep-project)
+(global-set-key (kbd "C-c t") 'git-grep-todo)
 (global-set-key (kbd "<M-up>") 'scroll-down-line)
 (global-set-key (kbd "<M-down>") 'scroll-up-line)
 (global-unset-key (kbd "C-v"))

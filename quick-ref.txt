@@ -106,6 +106,7 @@ C-c p s g               projectile-grep
 [F7]                    Compile project
 [F8]                    Run tests
 [C-c g]                 git-grep-project
+[C-c t]                 git-grep-todo -- find project TODOs
 
 Magit
 -----
