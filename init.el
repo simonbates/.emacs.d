@@ -4,19 +4,13 @@
              '("melpa" . "http://melpa.org/packages/") t)
 (package-initialize)
 
-;; default config
-(setq my-config-name 'default)
+;; defaults
+(setq my-use-irony t)
 
 ;; load machine local settings
 (setq my-local-init (expand-file-name "local.el" user-emacs-directory))
 (when (file-exists-p my-local-init)
       (load-file my-local-init))
-
-;; load config
-(load-file (expand-file-name
-            (concat (file-name-as-directory "configs")
-                    (concat (symbol-name my-config-name) ".el"))
-            user-emacs-directory))
 
 ;; diminish
 (require 'diminish)
@@ -73,21 +67,22 @@
 (setq magit-last-seen-setup-instructions "1.4.0")
 
 ;; irony
-(require 'irony)
-(require 'irony-cdb)
-(require 'irony-eldoc)
-(add-hook 'irony-mode-hook
-          (lambda ()
-            (define-key irony-mode-map [remap completion-at-point]
-              'irony-completion-at-point-async)
-            (define-key irony-mode-map [remap complete-symbol]
-              'irony-completion-at-point-async)
-            (yas-minor-mode 1)
-            (eldoc-mode 1)
-            (irony-eldoc 1)))
-(add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
-(eval-after-load 'company
-  '(add-to-list 'company-backends 'company-irony))
+(when my-use-irony
+  (require 'irony)
+  (require 'irony-cdb)
+  (require 'irony-eldoc)
+  (add-hook 'irony-mode-hook
+            (lambda ()
+              (define-key irony-mode-map [remap completion-at-point]
+                'irony-completion-at-point-async)
+              (define-key irony-mode-map [remap complete-symbol]
+                'irony-completion-at-point-async)
+              (yas-minor-mode 1)
+              (eldoc-mode 1)
+              (irony-eldoc 1)))
+  (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
+  (eval-after-load 'company
+    '(add-to-list 'company-backends 'company-irony)))
 
 ;; company
 (require 'company)
@@ -114,7 +109,7 @@
 ;; C
 (defun my-c-mode-hook ()
   (company-mode 1)
-  (irony-mode 1)
+  (when my-use-irony (irony-mode 1))
   (helm-gtags-mode 1))
 (add-hook 'c-mode-hook 'my-c-mode-hook)
 (add-hook 'c++-mode-hook 'my-c-mode-hook)
@@ -274,3 +269,4 @@
  '(erc-my-nick-face ((t (:foreground "orange" :weight bold))))
  '(erc-notice-face ((t (:foreground "#c8bfff" :weight bold))))
  '(hl-line ((t (:background "black")))))
+(put 'downcase-region 'disabled nil)
