@@ -6,6 +6,10 @@
 
 ;; defaults
 (setq my-use-irony t)
+(setq my-use-erc-notifications t)
+(setq my-use-flyspell t)
+(setq my-frame-width 120)
+(setq my-frame-height 52)
 
 ;; load machine local settings
 (setq my-local-init (expand-file-name "local.el" user-emacs-directory))
@@ -109,7 +113,8 @@
 ;; C
 (defun my-c-mode-hook ()
   (company-mode 1)
-  (when my-use-irony (irony-mode 1))
+  (when my-use-irony
+    (irony-mode 1))
   (helm-gtags-mode 1))
 (add-hook 'c-mode-hook 'my-c-mode-hook)
 (add-hook 'c++-mode-hook 'my-c-mode-hook)
@@ -136,9 +141,11 @@
 ;; ERC
 
 (require 'erc)
-(add-to-list 'erc-modules 'notifications)
+(when my-use-erc-notifications
+  (add-to-list 'erc-modules 'notifications))
 (setq erc-nick my-erc-nick)
-(erc-spelling-mode 1)
+(when my-use-flyspell
+  (erc-spelling-mode 1))
 (setq erc-prompt (lambda () (concat (buffer-name) ">")))
 
 (setq erc-autojoin-channels-alist
@@ -198,6 +205,10 @@
 (global-set-key (kbd "<M-down>") 'scroll-up-line)
 (global-unset-key (kbd "C-v"))
 
+;; window size
+(add-to-list 'default-frame-alist (cons 'width my-frame-width))
+(add-to-list 'default-frame-alist (cons 'height my-frame-height))
+
 ;; customize
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -215,7 +226,6 @@
  '(column-number-mode t)
  '(company-dabbrev-downcase nil)
  '(custom-enabled-themes (quote (wombat)))
- '(default-frame-alist (quote ((width . 120) (height . 52))))
  '(delete-selection-mode nil)
  '(ediff-split-window-function (quote split-window-horizontally))
  '(ediff-window-setup-function (quote ediff-setup-windows-plain))
