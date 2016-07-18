@@ -11,6 +11,9 @@
 (setq my-frame-width 120)
 (setq my-frame-height 52)
 
+;; set the font with an expression such as:
+;; (set-face-attribute 'default nil :font "DejaVu Sans Mono-11")
+
 ;; load machine local settings
 (setq my-local-init (expand-file-name "local.el" user-emacs-directory))
 (when (file-exists-p my-local-init)
