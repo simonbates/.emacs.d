@@ -50,7 +50,14 @@
 (diminish 'projectile-mode)
 
 ;; org mode
+
 (setq org-src-fontify-natively t)
+
+(setq org-agenda-custom-commands
+      '(("i" "IDRC"
+         ((agenda)
+          (alltodo))
+         ((org-agenda-files '("~/Documents/notes/idrc"))))))
 
 ;; org-present
 (eval-after-load "org-present"
@@ -197,6 +204,7 @@
     (compilation-start command 'grep-mode)))
 
 ;; key bindings
+
 (global-set-key (kbd "M-o") 'other-window)
 (global-set-key (kbd "<f7>") 'projectile-compile-project)
 (global-set-key (kbd "<f8>") 'projectile-test-project)
@@ -206,6 +214,12 @@
 (global-set-key (kbd "C-c t") 'git-grep-todo)
 (global-set-key (kbd "<M-up>") 'scroll-down-line)
 (global-set-key (kbd "<M-down>") 'scroll-up-line)
+
+(global-set-key (kbd "C-c l") 'org-store-link)
+(global-set-key (kbd "C-c a") 'org-agenda)
+(global-set-key (kbd "C-c c") 'org-capture)
+(global-set-key (kbd "C-c b") 'org-iswitchb)
+
 (global-unset-key (kbd "C-v"))
 
 ;; window size
@@ -254,7 +268,7 @@
  '(neo-theme (quote arrow))
  '(neo-window-width 38)
  '(next-screen-context-lines 4)
- '(org-agenda-files (quote ("~/notes")))
+ '(org-agenda-files (quote ("~/Documents/notes")))
  '(org-catch-invisible-edits (quote error))
  '(safe-local-variable-values
    (quote
