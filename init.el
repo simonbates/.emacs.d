@@ -232,7 +232,10 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(blink-cursor-mode nil)
+ '(blink-cursor-blinks 9)
+ '(blink-cursor-delay 0.65)
+ '(blink-cursor-interval 0.65)
+ '(blink-cursor-mode t)
  '(c-default-style
    (quote
     ((c-mode . "stroustrup")
